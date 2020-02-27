@@ -6,9 +6,12 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">Dashboard
-                    @role('writer|admin')
+                    {{-- @role('writer|admin')
                 <a href="{{route('posts.create')}}" class="float-right">New</a>
-                    @endrole
+                    @endrole --}}
+                    @can('write post')
+                    <a href="{{route('posts.create')}}" class="float-right">New</a>
+                        @endcan
                 </div>
 
                 <div class="card-body">

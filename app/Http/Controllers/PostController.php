@@ -112,6 +112,14 @@ class PostController extends Controller
     }
 
     public function manage_role_permission(Request $request){
+        
+        $role =  Role::findById($request->role);
+        $permission = Permission::findById($request->permission_id);
+        if($request->is_revoke == 1){
+            $role->revokePermissionTo($permission);
+        }else{
+            $role->givePermissionTo($permission);
+        }
         return response()->json(['message'=>'Role Permission Changed Successfully']);
     }
 }
