@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Post;
+use App\User;
 use Illuminate\Http\Request;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
@@ -97,5 +98,14 @@ class PostController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function user_management(){
+        $roles = Role::all();
+        $permissions = Permission::all();
+        $users = User::all();
+        $a = $users[0]->getRoleNames();
+        
+        return view('user.user_management',compact('roles','permissions','users'));
     }
 }

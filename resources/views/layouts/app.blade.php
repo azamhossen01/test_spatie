@@ -39,15 +39,31 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('posts.index') }}">{{ __('Post') }}</a>
                         </li>
-
-
-                        @forelse(Auth::user()->getAllPermissions() as $permission)
+                        @role('admin')
                         <li class="nav-item">
-                        <strong class="nav-link">{{$permission->name}}</strong>
+                            <a class="nav-link" href="{{ route('user_management') }}">{{ __('User Management') }}</a>
                         </li>
-                        @empty 
+                        @endrole
 
-                        @endforelse
+                        <li class="nav-item dropdown">
+                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                Permissions
+                            </a>
+
+                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                @forelse(Auth::user()->getAllPermissions() as $permission)
+                                <a class="dropdown-item" href="javascript:void(0)">
+                                    {{$permission->name}}
+                                </a>
+                                @empty 
+
+                                @endforelse
+                               
+                            </div>
+                        </li>
+
+
+                        
                         @endif
                     </ul>
 
