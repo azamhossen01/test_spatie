@@ -9,15 +9,16 @@
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
-
+   
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/switchery/0.8.2/switchery.min.css">
+
+    @stack('css')
 </head>
 <body>
     <div id="app">
@@ -107,5 +108,12 @@
             @yield('content')
         </main>
     </div>
+
+     <!-- Scripts -->
+     <!-- <script
+  src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script> -->
+     <script src="{{ asset('js/app.js') }}"></script>
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/switchery/0.8.2/switchery.min.js"></script>
+@stack('js')
 </body>
 </html>

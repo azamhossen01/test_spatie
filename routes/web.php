@@ -22,6 +22,8 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('user_management','PostController@user_management')->name('user_management');
 
+Route::get('manage_role_permission','PostController@manage_role_permission')->name('manage_role_permission');
+
 Route::get('posts','PostController@index')->name('posts.index');
 Route::post('posts','PostController@store')->name('posts.store');
 Route::get('posts/create','PostController@create')->name('posts.create')->middleware('permission:write post');

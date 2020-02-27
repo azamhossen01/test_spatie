@@ -104,8 +104,14 @@ class PostController extends Controller
         $roles = Role::all();
         $permissions = Permission::all();
         $users = User::all();
-        $a = $users[0]->getRoleNames();
+        // foreach($users as $p){
+        //     return $p->roles->first()->pivot;
+        // }
         
         return view('user.user_management',compact('roles','permissions','users'));
+    }
+
+    public function manage_role_permission(Request $request){
+        return response()->json(['message'=>'Role Permission Changed Successfully']);
     }
 }
